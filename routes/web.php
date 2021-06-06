@@ -13,13 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/usuarios', function () {
     return view('home');
 });
+
+Route::get('/', function(){
+    $listado=App\Models\LLIBRES::all();
+    //var_dump($listado);
+    foreach($listado as $p) {
+    echo $p->titol . "<br />";
+    }
+    });
 
 Route::get('/cataleg/{name}', function ($name) {
     return view('cataleg.'.$name);
 });
-Auth::routes();
+//Auth::routes(); TODO
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
