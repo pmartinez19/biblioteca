@@ -9,4 +9,5 @@ class PRESTECS extends Model
 {
     use HasFactory;
     protected $primaryKey = 'id';
+    public $table = "PRESTECS";
 }

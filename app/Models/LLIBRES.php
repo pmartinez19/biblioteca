@@ -10,5 +10,5 @@ class LLIBRES extends Model
     use HasFactory;
     protected $primaryKey = 'id';
     public $table = "LLIBRES";
-
+    
 }
