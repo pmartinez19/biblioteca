@@ -13,14 +13,14 @@ class CreatePrestecsTable extends Migration
      */
     public function up()
     {
-        Schema::create('PRESTECS', function (Blueprint $table) {
+        Schema::create('prestecs', function (Blueprint $table) {
             $table->id();
             $table->timestamp("data");
-            $table->boolean("disponible")->default(0);
-            $table->unsignedBigInteger('id_user');
-            $table->foreign('id_user')->references('id')->on('USERS')->onDelete("cascade");
-            $table->unsignedBigInteger('id_llibre');
-            $table->foreign('id_llibre')->references('id')->on('LLIBRES')->onDelete("cascade");
+            $table->boolean("retornat")->default(0);
+            $table->unsignedBigInteger('users_id');
+            $table->foreign('users_id')->references('id')->on('users')->onDelete("cascade");
+            $table->unsignedBigInteger('llibres_id');
+            $table->foreign('llibres_id')->references('id')->on('llibres')->onDelete("cascade");
             $table->timestamps();
         });
     }

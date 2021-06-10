@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class LLIBRES extends Model
+class users extends Model
 {
     use HasFactory;
     protected $primaryKey = 'id';
-    public $table = "LLIBRES";
-    
+    public $table = "users";
+    public function prestec(){
+        return $this->hasOne(prestecs::class);
+    }
 }

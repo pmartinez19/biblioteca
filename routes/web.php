@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\llibres;
+use App\Http\Controllers\LlibresController;
+use App\Models\users;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ViewErrorBag;
 
@@ -15,12 +18,6 @@ use Illuminate\Support\ViewErrorBag;
 */
 
 
-Route::get('/llista', function(){
-    $listado=App\Models\LLIBRES::all();
-    //var_dump($listado);
-    return view("llista", array("exemplars" =>$listado));
-    });
-
 Route::get('/welcome', function(){
  return view("welcome") ;
 });
@@ -29,10 +26,17 @@ Route::get('/cataleg/{name}', function ($name) {
     return view('cataleg.'.$name);
 });
 //Auth::routes(); TODO
+Route::get('/prueba/{id}', function ($id) {
+    return llibres::find($id)->prestec;
+    
+    });
+    
+Route::get('/llista', [LlibresController::class, 'llista']);
+Route::get('/consulta/{id}', [LlibresController::class, 'consulta']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //TODOO
 Route::get('/consulta/{id}', function($id){
-    $exemplar = App\Models\LLIBRES::where('id',1)->get();
+    $exemplar = App\Models\llibres::where('id',$id)->get();
     return view('llibre', array('llibre'=>$exemplar[0]));
     });

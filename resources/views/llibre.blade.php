@@ -7,6 +7,13 @@
         ISBN: {{ $llibre->ISBN }} <br />
         Autor: {{ $llibre->autor }} <br />
         Genere: {{ $llibre->genere }} <br />
+        Disponible: 
+            <?php
+                $dispo = ($llibre->disponible);
+                $dispo = ($dispo) ?  "disponible" :  "no disponible";
+                echo $dispo;
+            ?>
+        <br />
     
     </div>
 @endsection

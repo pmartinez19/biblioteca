@@ -13,12 +13,13 @@ class CreateLlibresTable extends Migration
      */
     public function up()
     {
-        Schema::create('LLIBRES', function (Blueprint $table) {
+        Schema::create('llibres', function (Blueprint $table) {
             $table->id();
             $table->string("ISBN");
             $table->string("titol");
             $table->string("autor");
             $table->string("genere");
+            $table->boolean("disponible")->default(1)->nullable();
             $table->timestamps();
         });
     }
