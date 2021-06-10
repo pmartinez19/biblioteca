@@ -2,7 +2,7 @@
 
 use App\Models\llibres;
 use App\Http\Controllers\LlibresController;
-use App\Models\users;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ViewErrorBag;
 
@@ -18,8 +18,8 @@ use Illuminate\Support\ViewErrorBag;
 */
 
 
-Route::get('/welcome', function(){
- return view("welcome") ;
+Route::get('/', function(){
+ return view("home") ;
 });
 
 Route::get('/cataleg/{name}', function ($name) {
@@ -40,3 +40,8 @@ Route::get('/consulta/{id}', function($id){
     $exemplar = App\Models\llibres::where('id',$id)->get();
     return view('llibre', array('llibre'=>$exemplar[0]));
     });
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+

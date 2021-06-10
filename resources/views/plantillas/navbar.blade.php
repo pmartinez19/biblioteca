@@ -40,18 +40,39 @@ body{
             <li class="nav-item">
                 <a class="nav-link" href="/llista">Llibres</a>
             </li>
+            @auth
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Zona privada
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/prestecs">Prestecs</a>
+                        <a class="dropdown-item" href="/historial">Historial</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+                
+            @endauth
+
+            @guest
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                    Zona privada
+                    Login
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/prestecs">Prestecs</a>
-                    <a class="dropdown-item" href="/historial">Historial</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                @if (Route::has('login'))
+                    <a class="dropdown-item" href="{{route('login')}}">Login</a>
+                    
+                @endif
+                @if (Route::has('register'))
+                    <a class="dropdown-item" href="{{route('register')}}">Registrat</a>
+                @endif    
                 </div>
             </li>
+            @endguest
             <li class="nav-item">
                 <a class="nav-link disabled" href="#">Disabled</a>
             </li>

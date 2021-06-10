@@ -18,7 +18,7 @@ class CreatePrestecsTable extends Migration
             $table->timestamp("data");
             $table->boolean("retornat")->default(0);
             $table->unsignedBigInteger('users_id');
-            $table->foreign('users_id')->references('id')->on('users')->onDelete("cascade");
+            $table->foreign('users_id')->references('id')->on('User')->onDelete("cascade");
             $table->unsignedBigInteger('llibres_id');
             $table->foreign('llibres_id')->references('id')->on('llibres')->onDelete("cascade");
             $table->timestamps();

@@ -13,7 +13,7 @@ class prestecs extends Model
     
     public function user()
     {
-        return $this->belongsTo(users::class, "users_id");
+        return $this->belongsTo(User::class, "users_id");
     }
     public function llibre()
     {
